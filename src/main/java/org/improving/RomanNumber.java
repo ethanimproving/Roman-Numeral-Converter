@@ -5,21 +5,7 @@ import java.util.TreeMap;
 
 public class RomanNumber {
 
-    public static void main(String[] args) {
-        var scanner = new Scanner(System.in);
-
-        while (true) {
-            var input = RomanNumber.getInteger(scanner);
-            if (!RomanNumber.isValid(input)) {
-                System.out.println("Please enter a valid integer less than 1,000,000");
-                continue;
-            }
-            var roman = toRoman(input);
-            System.out.println(roman);
-        }
-    }
-
-    private final static TreeMap<Integer, String> map = new TreeMap<Integer, String>();
+    private final static TreeMap<Integer, String> map = new TreeMap<>();
 
     static {
         map.put(1000, "M");
@@ -37,6 +23,20 @@ public class RomanNumber {
         map.put(1, "I");
     }
 
+    public static void main(String[] args) {
+        var scanner = new Scanner(System.in);
+
+        while (true) {
+            var input = RomanNumber.getInteger(scanner);
+            if (!RomanNumber.isValid(input)) {
+                System.out.println("Please enter a valid integer less than 1,000,000");
+                continue;
+            }
+            var roman = toRoman(input);
+            System.out.println(roman);
+        }
+    }
+
     public final static String toRoman(int number) {
         // Return the greatest key less than or equal to the given key.
         int l =  map.floorKey(number);
@@ -50,11 +50,8 @@ public class RomanNumber {
         return map.get(l) + toRoman(number-l);
     }
 
-    public static boolean isValid(Integer val) {
-        if (val > 0 && val <= 1000000) { // <-- from "0" to "range".
-            return true;
-        }
-        return false;
+    public static boolean isValid(int number) {
+        return number > 0 && number <= 1000000;
     }
 
     public static int getInteger(Scanner scanner) {
