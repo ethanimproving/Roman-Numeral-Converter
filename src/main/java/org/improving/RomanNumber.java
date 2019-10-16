@@ -8,7 +8,12 @@ public class RomanNumber {
     private final static TreeMap<Integer, String> map = new TreeMap<>();
 
     static {
-        map.put(1000, "M");
+        map.put(1000000, "M̅");
+        map.put(500000, "D̅");
+        map.put(100000, "C̅");
+        map.put(50000, "L̅");
+        map.put(10000, "X̅");
+        map.put(5000, "V̅");
         map.put(900, "CM");
         map.put(500, "D");
         map.put(400, "CD");
